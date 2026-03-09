@@ -4,6 +4,10 @@ A client-only FIRE (Financial Independence, Retire Early) calculator built for I
 
 **This app was vibe-coded entirely with Claude Code using only requirement specifications and some orchestration and serves as a simple test of capabilities of the Claude Opus 4.6 model.**
 
+## Live Demo
+
+[https://firecalc.onrender.com](https://firecalc.onrender.com)
+
 ## Features
 
 - **Indian-specific**: ₹ currency with lakh/crore grouping and compact formatting (₹1.5 Cr, ₹10 L)
