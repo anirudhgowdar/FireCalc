@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# FIRE Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A client-only FIRE (Financial Independence, Retire Early) calculator built for Indian users. Provides year-by-year corpus projections with INR formatting (lakh/crore), dark mode with OS preference detection, and an interactive SVG chart.
 
-Currently, two official plugins are available:
+**This app was vibe-coded entirely with Claude Code using only requirement specifications and some orchestration and serves as a simple test of capabilities of the Claude Opus 4.6 model.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Indian-specific**: ₹ currency with lakh/crore grouping and compact formatting (₹1.5 Cr, ₹10 L)
+- **Comprehensive inputs**: age, income, expenses, savings increment, existing wealth, pre/post-retirement returns, inflation, safe withdrawal rate
+- **Auto-derived savings**: monthly savings = income − expenses, unless manually overridden
+- **Two-phase projection**: accumulation (monthly compounding) and decumulation (inflation-adjusted withdrawals)
+- **Interactive chart**: SVG area chart with hover details, retirement boundary marker, and depletion indicator
+- **Dark mode**: follows OS preference (with polling fallback for Linux DEs), manual toggle persists to localStorage
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+React 19, TypeScript, Vite 7, Tailwind CSS v4 — no external UI or charting libraries.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Development
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev       # start dev server
+npm run build     # type-check + production build
+npm run lint      # ESLint
+npm run preview   # serve production build
 ```
